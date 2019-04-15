@@ -17,147 +17,152 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+public class DocumentManager implements Cloneable {
 
-public class DocumentManager implements Cloneable  {
-	
-	
 	public Map<String, String> dataMap = new HashMap<String, String>();
-	
+
 	public DocumentManager() {
+	}
+
+	public BufferedReader readTex(String filename) throws FileNotFoundException {
+		FileReader myFr = new FileReader(filename);
+		StringBuilder sb = new StringBuilder();
+		BufferedReader reader = new BufferedReader(myFr);
+		
+		return reader;
 	}
 	
 	public void myRead() throws Exception {
 		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/article-template.tex");
 		StringBuilder sb = new StringBuilder();
 		BufferedReader reader = new BufferedReader(myFr);
-		
+
 		String line = reader.readLine();
 		String myString = new String();
-		
-		while(line != null) {
+
+		while (line != null) {
 			line = reader.readLine();
-			if(line==null) break;
+			if (line == null)
+				break;
 			sb.append(line);
 			sb.append("\n");
 		}
 		myFr.close();
-		myString=sb.toString();
-		
-		dataMap.put("article",myString);
-		//System.out.println(dataMap);
-		
-		
+		myString = sb.toString();
+
+		dataMap.put("article", myString);
+		// System.out.println(dataMap);
+
 		Document doc = new Document();
 		doc.clone();
 		doc.setContents(myString);
-		//System.out.println(doc.getContents());
-		
-		//Get date and time 
+		// System.out.println(doc.getContents());
+
+		// Get date and time
 		doc.setDate(ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
 		System.out.println(doc.getDate());
-			
-		try (PrintWriter w = new PrintWriter("output"  + ".tex", "UTF-8");){
-	        w.println(doc.getContents());
-	    } 
-		
+
+		try (PrintWriter w = new PrintWriter("output" + ".tex", "UTF-8");) {
+			w.println(doc.getContents());
+		}
+
 	}
-	
-	    public void myRead2() throws Exception {
+
+	public void myRead2() throws Exception {
 		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/book-template.tex");
 		StringBuilder sb = new StringBuilder();
 		BufferedReader reader = new BufferedReader(myFr);
-		
+
 		String line = reader.readLine();
 		String myString = new String();
-		
-		while(line != null) {
+
+		while (line != null) {
 			line = reader.readLine();
-			if(line==null) break;
+			if (line == null)
+				break;
 			sb.append(line);
 			sb.append("\n");
 		}
-		
-		myString=sb.toString();
-		
-		dataMap.put("book",myString);
+
+		myString = sb.toString();
+
+		dataMap.put("book", myString);
 		System.out.println(dataMap);
-		
-		
+
 	}
-	
-	    public void myRead3() throws Exception {
-			FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/letter-template.tex");
-			StringBuilder sb = new StringBuilder();
-			BufferedReader reader = new BufferedReader(myFr);
-			
-			String line = reader.readLine();
-			String myString = new String();
-			
-			while(line != null) {
-				line = reader.readLine();
-				if(line==null) break;
-				sb.append(line);
-				sb.append("\n");
-			}
-			
-			myString=sb.toString();
-			
-			dataMap.put("letter",myString);
-			System.out.println(dataMap);
+
+	public void myRead3() throws Exception {
+		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/letter-template.tex");
+		StringBuilder sb = new StringBuilder();
+		BufferedReader reader = new BufferedReader(myFr);
+
+		String line = reader.readLine();
+		String myString = new String();
+
+		while (line != null) {
+			line = reader.readLine();
+			if (line == null)
+				break;
+			sb.append(line);
+			sb.append("\n");
 		}
-	    
-	    public void myRead4() throws Exception {
-			FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/report-template.tex");
-			StringBuilder sb = new StringBuilder();
-			BufferedReader reader = new BufferedReader(myFr);
-			
-			String line = reader.readLine();
-			String myString = new String();
-			
-			while(line != null) {
-				line = reader.readLine();
-				if(line==null) break;
-				sb.append(line);
-				sb.append("\n");
-			}
-			
-			myString=sb.toString();
-			
-			dataMap.put("report",myString);
-			System.out.println(dataMap);
+
+		myString = sb.toString();
+
+		dataMap.put("letter", myString);
+		System.out.println(dataMap);
+	}
+
+	public void myRead4() throws Exception {
+		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/report-template.tex");
+		StringBuilder sb = new StringBuilder();
+		BufferedReader reader = new BufferedReader(myFr);
+
+		String line = reader.readLine();
+		String myString = new String();
+
+		while (line != null) {
+			line = reader.readLine();
+			if (line == null)
+				break;
+			sb.append(line);
+			sb.append("\n");
 		}
-	
-	
-	
-	    public void SaveMe(String getFromText) {
-			
-			 File f = new File("newSavedDoc.tex");
-			 if(f.exists()) { 
-				 f.delete();
-			 }
-			
-			 PrintWriter pw = null;
-				try {
-					pw = new PrintWriter(new BufferedWriter(new FileWriter("newSavedDoc.tex",true)));
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				pw.print("");
-				pw.println(getFromText);
-				pw.close();	
+
+		myString = sb.toString();
+
+		dataMap.put("report", myString);
+		System.out.println(dataMap);
+	}
+
+	public void SaveMe(String getFromText) {
+
+		File f = new File("newSavedDoc.tex");
+		if (f.exists()) {
+			f.delete();
 		}
-	
-	
-	    public Document createDocument(String string) throws CloneNotSupportedException {
-	    	
-	    	//for ( String key : dataMap.keySet() ) {
-	    	  //  key="article";
-	    	//}
-		    //clone	
-		    
-	    	return null;
-	    }
-			
+
+		PrintWriter pw = null;
+		try {
+			pw = new PrintWriter(new BufferedWriter(new FileWriter("newSavedDoc.tex", true)));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		pw.print("");
+		pw.println(getFromText);
+		pw.close();
+	}
+
+	public Document createDocument(String string) throws CloneNotSupportedException {
+
+		// for ( String key : dataMap.keySet() ) {
+		// key="article";
+		// }
+		// clone
+
+		return null;
+	}
+
 }
