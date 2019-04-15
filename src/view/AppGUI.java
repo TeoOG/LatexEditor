@@ -7,24 +7,23 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import model.DocumentManager;
+import model.OpenAsActionListener;
+import model.SaveActionListener;
+import model.SaveAsActionListener;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
-import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+
 public class AppGUI {
 
 	private String[] s = { "", "article", "book", "letter", "report", "new" };
 	private JFrame frame;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -118,27 +117,12 @@ public class AppGUI {
 				}
 			}
 		});
-		comboBox.setBounds(36, 209, 151, 24);
+		comboBox.setBounds(26, 209, 151, 24);
 		frame.getContentPane().add(comboBox);
 
 		JButton btnSave = new JButton("Save");
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DocumentManager of = new DocumentManager();
-				// copy contents of the GUI into a string
-				String getFromText = textArea.getText();
-				textArea.selectAll();
-
-				// save
-				try {
-					of.SaveMe(getFromText);
-				} catch (Exception e1) {
-					// TODO auto-generated in each block
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnSave.setBounds(260, 209, 114, 25);
+		btnSave.addActionListener(new SaveActionListener(textArea));
+		btnSave.setBounds(189, 209, 105, 25);
 		frame.getContentPane().add(btnSave);
 
 		JMenuBar menuBar = new JMenuBar();
@@ -151,39 +135,16 @@ public class AppGUI {
 		mnFile.add(mntmNew);
 
 		JMenuItem mntmSave = new JMenuItem("Save as...");
-		mntmSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// open file chooser - default
-				JFileChooser fileChooser = new JFileChooser();
-				StringBuilder sb = new StringBuilder();
-				if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-
-					// get the file
-					java.io.File file = fileChooser.getSelectedFile();
-
-					String myString = textArea.getText();
-
-					try {
-						PrintWriter out = new PrintWriter(file);
-						out.println(myString);
-						out.close();
-					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-				
-				}
-
-				else {
-					sb.append("No File Selected");
-
-				}
-			}
-
-		});
+		mntmSave.addActionListener(new SaveAsActionListener(textArea));
 		
 		JMenuItem mntmSave_1 = new JMenuItem("Save");
+		mntmSave_1.addActionListener(new SaveActionListener(textArea));
+		
+		JButton btnOpen = new JButton("Open");
+		btnOpen.addActionListener(new OpenAsActionListener(textArea));
+		btnOpen.setBounds(306, 209, 105, 25);
+		frame.getContentPane().add(btnOpen);
+		
 		mnFile.add(mntmSave_1);
 		mnFile.add(mntmSave);
 
