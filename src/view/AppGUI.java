@@ -133,20 +133,21 @@ public class AppGUI {
 
 		JMenuItem mntmNew = new JMenuItem("New");
 		mnFile.add(mntmNew);
+		mntmNew.addActionListener(new SaveAsActionListener(textArea));
 
-		JMenuItem mntmSave = new JMenuItem("Save as...");
-		mntmSave.addActionListener(new SaveAsActionListener(textArea));
+		JMenuItem mntmSaveAs = new JMenuItem("Save as...");
+		mntmSaveAs.addActionListener(new SaveAsActionListener(textArea));
 		
-		JMenuItem mntmSave_1 = new JMenuItem("Save");
-		mntmSave_1.addActionListener(new SaveActionListener(textArea));
+		JMenuItem mntmSave = new JMenuItem("Save");
+		mntmSave.addActionListener(new SaveActionListener(textArea));
 		
 		JButton btnOpen = new JButton("Open");
 		btnOpen.addActionListener(new OpenAsActionListener(textArea));
 		btnOpen.setBounds(306, 209, 105, 25);
 		frame.getContentPane().add(btnOpen);
 		
-		mnFile.add(mntmSave_1);
 		mnFile.add(mntmSave);
+		mnFile.add(mntmSaveAs);
 
 	}
 }

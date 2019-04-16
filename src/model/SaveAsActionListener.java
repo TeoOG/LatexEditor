@@ -25,11 +25,11 @@ public class SaveAsActionListener implements ActionListener {
 		JFileChooser fileChooser = new JFileChooser();
 		if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 			// get the file
-			this.fileTex = fileChooser.getSelectedFile();	
-			
+			this.fileTex = fileChooser.getSelectedFile();
+
 			String myString = this.textArea.getText();
 
-			try {
+			try {//print string to file
 				PrintWriter out = new PrintWriter(this.fileTex);
 				out.println(myString);
 				out.close();
@@ -38,7 +38,7 @@ public class SaveAsActionListener implements ActionListener {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
 
 }

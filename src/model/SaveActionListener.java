@@ -23,21 +23,26 @@ public class SaveActionListener implements ActionListener {
 	public void actionPerformed(ActionEvent even) {
 		// open file chooser - default
 		JFileChooser fileChooser = new JFileChooser();
-		if (this.fileTex == null && fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-			// get the file
-			this.fileTex = fileChooser.getSelectedFile();
-		}
+		
+		if (this.fileTex == null) {
+			if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+				// get the file
+				this.fileTex = fileChooser.getSelectedFile();
+			}
 
-		String myString = this.textArea.getText();
+			String myString = this.textArea.getText();
 
-		try {
-			PrintWriter out = new PrintWriter(this.fileTex);
-			out.println(myString);
-			out.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			try {
+				PrintWriter out = new PrintWriter(this.fileTex);
+				out.println(myString);
+				out.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
+		
 
 	}
 
