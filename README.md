@@ -9,4 +9,4 @@ The goal of the editor is to facilitate the usage of Latex commands for the prep
 
 Implemented using Java Swing for GUI and JUnit for testing.
 
-![Model]([Paste_link_here](https://raw.githubusercontent.com/TeoOG/LatexEditor/refs/heads/master/latex1.png))
+https://raw.githubusercontent.com/TeoOG/LatexEditor/refs/heads/master/latex1.png
