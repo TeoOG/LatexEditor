@@ -8,3 +8,5 @@ The objective of this project is to develop a simple Latex editor for inexperien
 The goal of the editor is to facilitate the usage of Latex commands for the preparation of Latex documents. 
 
 Implemented using Java Swing for GUI and JUnit for testing.
+
+![Model]([Paste_link_here](https://raw.githubusercontent.com/TeoOG/LatexEditor/refs/heads/master/latex1.png))
