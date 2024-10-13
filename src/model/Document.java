@@ -1,6 +1,6 @@
 package model;
 
-public class Document implements Cloneable {
+public class Document {
 
 	private String author;
 	private String date;
