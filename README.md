@@ -10,5 +10,5 @@ The goal of the editor is to facilitate the usage of Latex commands for the prep
 Implemented using Java Swing for GUI and JUnit for testing.
 
 
-![ezcv logo](https://raw.githubusercontent.com/TeoOG/LatexEditor/refs/heads/master/latex1.png)
-![ezcv logo](https://raw.githubusercontent.com/TeoOG/LatexEditor/refs/heads/master/latex2.png)
+![ezcv logo]()
+![ezcv logo]()
