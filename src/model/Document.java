@@ -6,8 +6,8 @@ public class Document implements Cloneable {
 	private String date;
 	private double versionID;
 	private String contents;
+
 	
-	//not sure if this is right
 	public Document(String author,String date,double versionID,String contents) {
 		 this.author=author;
 		 this.date=date;
