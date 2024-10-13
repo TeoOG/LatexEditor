@@ -14,7 +14,7 @@ public class Document implements Cloneable {
 		 this.versionID=versionID;
 	     this.contents=contents;		
 	}
-	//not sure if this is right
+	
 	public Document() {
 		// TODO Auto-generated constructor stub
 	}
