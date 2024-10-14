@@ -11,7 +11,9 @@ The goal of the editor is to facilitate the usage of Latex commands for the prep
 Implemented using Java Swing for GUI and JUnit for testing.
 Because this is an old eclipse project I made for my uniiversity course, in order to run it on IntelliJ, 
 go to File → New → Project from Existing Sources and cliick or .classpath or .project. If you're having trouble
-running the project, open a terminal and go the ```/src``` path of the project. Then compile it and run it in the traditional
+running the project, open a terminal and go the ```/src``` path of the project. 
+
+Then compile it and run it in the traditional
 way, using ```javac view/View.java model/*.java``` and ```java view.View``` .      
 
 
