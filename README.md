@@ -1,5 +1,5 @@
 # LatexEditor
-LatexEditor in Java (Eclipse Project), made for Software Development course, of the University of Ioannina.
+LatexEditor in Java (Eclipse Project), made for Software Development course, of the University of Ioannina, using the MVC design pattern.
 
 Latex is a well known high quality document preparation markup language.
 It provides a large variety of styles and commands that enable advanced document formatting.
