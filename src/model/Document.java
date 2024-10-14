@@ -1,13 +1,13 @@
 package model;
 
-public class Document {
+public class Document implements Cloneable {
 
 	private String author;
 	private String date;
 	private double versionID;
 	private String contents;
-
 	
+
 	public Document(String author,String date,double versionID,String contents) {
 		 this.author=author;
 		 this.date=date;
@@ -58,8 +58,8 @@ public class Document {
 		doc.date=this.date;
 		doc.versionID=this.versionID;
 		doc.contents=this.contents;
-		
+
 		return doc;
-	}	
-	
+	}
+
 }
