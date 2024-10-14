@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class DocumentManager implements Cloneable {
+public class DocumentManager  {
 
 	public Map<String, String> dataMap = new HashMap<String, String>();
 
@@ -32,8 +32,9 @@ public class DocumentManager implements Cloneable {
 		return reader;
 	}
 	
-	public void myRead() throws Exception {
-		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/article-template.tex");
+	public void myReadTemplate(String path, String documentType) throws Exception {
+		path = Paths.get(path).toString();
+		FileReader myFr = new FileReader(path);
 		StringBuilder sb = new StringBuilder();
 		BufferedReader reader = new BufferedReader(myFr);
 
@@ -50,7 +51,7 @@ public class DocumentManager implements Cloneable {
 		myFr.close();
 		myString = sb.toString();
 
-		dataMap.put("article", myString);
+		dataMap.put(documentType, myString);
 		// System.out.println(dataMap);
 
 		Document doc = new Document();
@@ -62,77 +63,48 @@ public class DocumentManager implements Cloneable {
 		doc.setDate(ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME));
 		System.out.println(doc.getDate());
 
+		// Write to an output, for temporay save
 		try (PrintWriter w = new PrintWriter("output" + ".tex", "UTF-8");) {
 			w.println(doc.getContents());
 		}
 
 	}
+	public void readArticle() {
+		String documentType = "article";
+		String path = "./article-template.tex"; // Correct path
 
-	public void myRead2() throws Exception {
-		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/book-template.tex");
-		StringBuilder sb = new StringBuilder();
-		BufferedReader reader = new BufferedReader(myFr);
-
-		String line = reader.readLine();
-		String myString = new String();
-
-		while (line != null) {
-			line = reader.readLine();
-			if (line == null)
-				break;
-			sb.append(line);
-			sb.append("\n");
+		try {
+			myReadTemplate(path, documentType);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		myString = sb.toString();
-
-		dataMap.put("book", myString);
-		System.out.println(dataMap);
-
 	}
-
-	public void myRead3() throws Exception {
-		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/letter-template.tex");
-		StringBuilder sb = new StringBuilder();
-		BufferedReader reader = new BufferedReader(myFr);
-
-		String line = reader.readLine();
-		String myString = new String();
-
-		while (line != null) {
-			line = reader.readLine();
-			if (line == null)
-				break;
-			sb.append(line);
-			sb.append("\n");
+	public void readBook() throws IOException {
+		String documentType = "book";
+		String path = "./book-template.tex";
+		try {
+			myReadTemplate(path, documentType);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		myString = sb.toString();
-
-		dataMap.put("letter", myString);
-		System.out.println(dataMap);
 	}
-
-	public void myRead4() throws Exception {
-		FileReader myFr = new FileReader("/home/teo/eclipse-workspace/LaTex/report-template.tex");
-		StringBuilder sb = new StringBuilder();
-		BufferedReader reader = new BufferedReader(myFr);
-
-		String line = reader.readLine();
-		String myString = new String();
-
-		while (line != null) {
-			line = reader.readLine();
-			if (line == null)
-				break;
-			sb.append(line);
-			sb.append("\n");
+	public void readLetter() throws IOException {
+		String documentType = "letter";
+		String path = "./letter-template.tex";
+		try {
+			myReadTemplate(path, documentType);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		myString = sb.toString();
-
-		dataMap.put("report", myString);
-		System.out.println(dataMap);
+	}
+	public void readReport() throws IOException {
+		String documentType = "report";
+		String path = "./report-template.tex";
+		try {
+			myReadTemplate(path, documentType);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void SaveMe(String getFromText) {
@@ -155,14 +127,5 @@ public class DocumentManager implements Cloneable {
 		pw.close();
 	}
 
-	public Document createDocument(String string) throws CloneNotSupportedException {
-
-		// for ( String key : dataMap.keySet() ) {
-		// key="article";
-		// }
-		// clone
-
-		return null;
-	}
-
+	
 }
