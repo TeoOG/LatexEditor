@@ -13,8 +13,7 @@ Because this is an old eclipse project I made for my uniiversity course, in orde
 go to File → New → Project from Existing Sources and cliick or .classpath or .project. If you're having trouble
 running the project, open a terminal and go the ```/src``` path of the project. 
 
-Then compile it and run it in the traditional
-way, using ```javac view/View.java model/*.java``` and ```java view.View``` .      
+Then, in order to compile it and run it , use ```javac view/View.java model/*.java``` and ```java view.View``` .      
 
 
 
